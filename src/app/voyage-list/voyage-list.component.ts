@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {VoyageService} from '../shared/voyage.service';
+import {Formule} from '../model/formule';
 
 @Component({
   selector: 'app-voyage-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoyageListComponent implements OnInit {
 
-  constructor() { }
+  formules: Formule[];
 
-  ngOnInit() {
+  constructor(private voyageService: VoyageService) {
   }
 
+  ngOnInit() {
+    this.voyageService.getAll().subscribe(
+      (formules) => {
+        this.formules = formules;
+      });
+  }
 }
