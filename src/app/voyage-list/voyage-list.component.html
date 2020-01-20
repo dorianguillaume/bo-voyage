@@ -1,5 +1,14 @@
-<div>
-
-
-
+<div class="card-deck">
+  <div *ngFor="let formule of formules" class="card col-3">
+    <div class="card-body">
+      <h5 class="card-title">{{formule.destination.region}}</h5>
+      <p class="card-text">Voyage du {{formule.date_depart | date: 'dd/MM/yyyy hh:mm'}} au {{formule.date_retour | date: 'dd/MM/yyyy hh:mm'}}.
+        {{formule.nb_places}} places restantes.
+      <a [routerLink]="['/voyage', formule.id]">Détails</a>
+    </div>
+    <div class="card-footer">
+      <p>{{formule.prix_ht}}€</p>
+    </div>
+  </div>
 </div>
+
