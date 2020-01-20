@@ -16,7 +16,8 @@ export class ReservationComponent implements OnInit {
   ngOnInit() {
     this.reservationForm = new FormGroup({
       prenom: new FormControl('', [Validators.required]),
-      nom: new FormControl('', [Validators.required])
+      nom: new FormControl('', [Validators.required]),
+      assurance: new FormControl()
     })
   }
 
