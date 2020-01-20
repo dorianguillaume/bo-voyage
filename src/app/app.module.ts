@@ -6,10 +6,12 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InMemoryDataService } from './shared/in-memory-data.service';
+import { VoyageListComponent } from './voyage-list/voyage-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VoyageListComponent
   ],
   imports: [
     BrowserModule,
