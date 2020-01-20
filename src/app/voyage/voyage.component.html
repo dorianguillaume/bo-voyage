@@ -1,1 +1,12 @@
-<p>voyage works!</p>
+<div class="container" *ngIf="voyage">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mx-auto" style="width: 18rem;">
+                <img [src]="'assets/'+voyage.destination.images[0]" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Prix du voyage : <span class="font-weight-bold">{{voyage.prix_ht}}</span> €</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

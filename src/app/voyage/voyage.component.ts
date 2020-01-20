@@ -9,15 +9,21 @@ import { VoyageService } from '../shared/voyage.service';
 })
 export class VoyageComponent implements OnInit {
 
+  private voyage
+
   constructor(private activatedRoute: ActivatedRoute, private voyageService: VoyageService ) { }
 
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe(
       params => {
-        this.voyageService
+        const id = params.get('id')
+        this.voyageService.find(id).subscribe(
+          voyage => {
+            this.voyage = voyage
+          }
+        )
       }
     )
   }
-
 }
