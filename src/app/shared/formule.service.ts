@@ -6,28 +6,28 @@ import {Formule} from '../model/formule';
 @Injectable({
   providedIn: 'root'
 })
-export class VoyageService {
+export class FormuleService {
 
   constructor(private httpClient: HttpClient) {
   }
 
+  /* Appel GET vers api/formules pour récupérer la liste des formules */
   getAll(): Observable<Formule[]> {
     return this.httpClient.get<Formule[]>('api/formules');
   }
 
-  get(i) {
-    return this.httpClient.get<Formule[]>('api/formules')[i];
+  /* Appel GET vers api/formules/id pour récupérer la formule correspondant à l'ID passé en paramètre */
+  find(id) {
+    return this.httpClient.get<Formule>('api/formules/' + id);
   }
 
+  /* Appel PUT vers api/formules pour mettre à jour la formule passée en paramètre */
   update(formule) {
     return this.httpClient.put('api/formules', formule);
   }
 
+  /* Appel POST vers api/formules pour créer la formule passée en paramètre */
   create(formule) {
     return this.httpClient.post('api/formules', formule);
-  }
-
-  find(id) {
-    return this.httpClient.get<Formule>('api/formules/' + id);
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {VoyageService} from '../shared/voyage.service';
+import {FormuleService} from '../shared/formule.service';
 import {Formule} from '../model/formule';
 
 @Component({
@@ -11,11 +11,13 @@ export class VoyageListComponent implements OnInit {
 
   formules: Formule[];
 
-  constructor(private voyageService: VoyageService) {
+  /* Instanciation du service pour récupérer les formules */
+  constructor(private formuleService: FormuleService) {
   }
 
   ngOnInit() {
-    this.voyageService.getAll().subscribe(
+    /* Récupération de la liste des formules au travers d'une promesse */
+    this.formuleService.getAll().subscribe(
       (formules) => {
         this.formules = formules;
       });

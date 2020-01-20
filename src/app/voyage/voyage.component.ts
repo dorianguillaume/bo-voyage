@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { VoyageService } from '../shared/voyage.service';
+import { FormuleService } from '../shared/formule.service';
 
 @Component({
   selector: 'app-voyage',
@@ -11,14 +11,14 @@ export class VoyageComponent implements OnInit {
 
   private voyage
 
-  constructor(private activatedRoute: ActivatedRoute, private voyageService: VoyageService ) { }
+  constructor(private activatedRoute: ActivatedRoute, private formuleService: FormuleService ) { }
 
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe(
       params => {
         const id = params.get('id')
-        this.voyageService.find(id).subscribe(
+        this.formuleService.find(id).subscribe(
           voyage => {
             this.voyage = voyage
           }
@@ -28,6 +28,6 @@ export class VoyageComponent implements OnInit {
   }
 
   reserved(){
-    
+
   }
 }
