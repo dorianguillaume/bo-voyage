@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservation',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationComponent implements OnInit {
 
-  constructor() { }
+  reservationForm: FormGroup
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+    this.reservationForm = new FormGroup({
+      prenom: new FormControl('', [Validators.required]),
+      nom: new FormControl('', [Validators.required])
+    })
   }
 
 }
