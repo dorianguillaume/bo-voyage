@@ -1,13 +1,13 @@
 export class Reservation {
     id: number
-    idClient: number
-    idFormule: number
-    date: Date
+    id_client: number
+    id_formule: number
+    date: number
 
-    constructor(id: number, idClient: number, idFormule: number, date: Date) {
+    constructor(id: number, id_client: number, id_formule: number, date: number) {
         this.id = id
-        this.idClient = idClient
-        this.idFormule = idFormule
+        this.id_client = id_client
+        this.id_formule = id_formule
         this.date = date
     }
 }

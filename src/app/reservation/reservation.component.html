@@ -48,7 +48,7 @@
           <input type="checkbox" class="form-check-input" id="assurance" formControlName="assurance">
           <label class="form-check-label" for="assurance">Souscrire à l'assurance annulation</label>
         </div>
-        <button type="submit" class="btn btn-success" [disabled]="reservationForm.invalid">Valider</button>
+        <button type="submit" class="btn btn-success" [disabled]="reservationForm.invalid" (click)="addReservation()">Valider</button>
       </form>
     </div>
   </div>

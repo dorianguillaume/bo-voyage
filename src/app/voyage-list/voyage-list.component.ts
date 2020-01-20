@@ -20,6 +20,7 @@ export class VoyageListComponent implements OnInit {
     this.formuleService.getAll().subscribe(
       (formules) => {
         this.formules = formules;
+        console.log(formules)
       });
   }
 }

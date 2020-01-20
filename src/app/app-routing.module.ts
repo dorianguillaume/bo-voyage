@@ -5,6 +5,7 @@ import {VoyageComponent} from './voyage/voyage.component';
 import {ReservationComponent} from './reservation/reservation.component';
 import {AuthServiceGuard} from './auth/auth-service.guard';
 import {LoginComponent} from './login/login.component';
+import { ReservationClientComponent } from './reservation-client/reservation-client.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'reservation/:id',
     component: ReservationComponent,
+    canActivate: [AuthServiceGuard]
+  },
+  {
+    path: 'mes-reservations',
+    component: ReservationClientComponent,
     canActivate: [AuthServiceGuard]
   },
   {

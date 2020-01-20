@@ -9,7 +9,7 @@ import { ClientService } from './client.service';
 export class AuthService {
 
   private isAuth = false;
-  private user 
+  public user 
 
   constructor(private router: Router, private clientService: ClientService) { }
 
@@ -21,11 +21,12 @@ export class AuthService {
     this.isAuth = false;
   }
 
-   setUser(user){
+  setUser(user){
     this.user = user
   }
 
   isAuthenticated() {
     return this.isAuth;
   }
+  
 }

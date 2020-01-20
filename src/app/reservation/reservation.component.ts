@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CustomValidators } from 'ng2-validation';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ReservationService } from '../shared/reservation.service';
+import { Reservation } from '../model/reservation';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-reservation',
@@ -12,7 +16,7 @@ export class ReservationComponent implements OnInit {
 
   reservationForm: FormGroup
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private activatedRoute: ActivatedRoute, private reservationService: ReservationService, private authService: AuthService, private router:Router) { }
 
   ngOnInit() {
     this.reservationForm = new FormGroup({
@@ -38,6 +42,17 @@ export class ReservationComponent implements OnInit {
 
   get ccv(){
     return this.reservationForm.controls.ccv
+  }
+  
+  addReservation(){
+    this.activatedRoute.paramMap.subscribe(
+      params => {
+        //+params.get('id') ==> parseToInt
+        let reservation = new Reservation(1, this.authService.user, +params.get('id'), Date.now())
+        this.reservationService.create(reservation)
+        this.router.navigate(['success'])
+      }
+    )
   }
 
 }

@@ -14,6 +14,7 @@ import { VoyageComponent } from './voyage/voyage.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { ReservationClientComponent } from './reservation-client/reservation-client.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     VoyageComponent,
     ReservationComponent,
-    LoginComponent
+    LoginComponent,
+    ReservationClientComponent
   ],
   imports: [
     BrowserModule,

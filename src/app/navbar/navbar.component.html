@@ -5,7 +5,8 @@
     </button>
     <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Nos Voyages</a>
+        <a class="nav-item nav-link active" [routerLink]="'/voyages'">Nos Voyages</a>
+        <a class="nav-item nav-link active" [routerLink]="'/mes-reservations'">Vos Reservations</a>
       </div>
       <div class="d-flex align-items-center">
         <p *ngIf="authService.user" class="mb-0 mr-2">Bonjour {{authService.user.nom}}</p>

@@ -171,8 +171,16 @@ export class InMemoryDataService implements InMemoryDbService {
       date_naissance: '2000-01-01',
       email: 'm@m.mmm',
       password: 'm&ms'
-  }]
+  }];
 
-    return { formules, voyageurs };
+    const reservations = [{
+      id: '1',
+      id_client: '2',
+      id_formule: '9',
+      date: '1'
+
+    }]
+
+    return { formules, voyageurs, reservations };
   }
 }
