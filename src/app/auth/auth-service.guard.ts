@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, RoutesRecognized} from '@angular/router';
+import {CanActivate, Router} from '@angular/router';
 import {AuthService} from '../shared/auth.service';
-import {pairwise} from 'rxjs/internal/operators/pairwise';
-import {filter} from 'rxjs/internal/operators/filter';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +15,6 @@ export class AuthServiceGuard implements CanActivate {
   }
 
   canActivate() {
-    let isAuth = this.authService.isAuthenticated()
-
     const isAuth = this.authservice.isAuthenticated();
 
     if (!isAuth) {
@@ -26,6 +22,6 @@ export class AuthServiceGuard implements CanActivate {
       this.previousUrl = this.router.getCurrentNavigation().initialUrl.toString();
       this.router.navigate(['/login']);
     }
-    return isAuth
+    return isAuth;
   }
 }
