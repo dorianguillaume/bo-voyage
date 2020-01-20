@@ -7,15 +7,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InMemoryDataService } from './shared/in-memory-data.service';
 import { VoyageListComponent } from './voyage-list/voyage-list.component';
+<<<<<<< HEAD
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+=======
+import { VoyageComponent } from './voyage/voyage.component';
+import { ReservationComponent } from './reservation/reservation.component';
+>>>>>>> master
 
 @NgModule({
   declarations: [
     AppComponent,
     VoyageListComponent,
+<<<<<<< HEAD
     NavbarComponent,
     FooterComponent
+=======
+    VoyageComponent,
+    ReservationComponent
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
