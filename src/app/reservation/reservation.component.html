@@ -2,34 +2,46 @@
   <div class="row justify-content-center">
     <div class="col-9">
       <form [formGroup]="reservationForm">
+        <p>Pour confirmer votre réservation veuillez renseigner vos informations de paiement :</p>
         <div class="form-row">
-          <div class="form-group col">
-            <label for="prenom">Prenom</label>
-            <input type="text" class="form-control" id="prenom" formControlName="prenom">
+          <div class="form-group col-4">
+            <label for="carteNum">Numéros Carte</label>
+            <input type="text" class="form-control" id="carteNum" formControlName="carteNum" placeholder="#### #### #### ####"
+              [class.is-invalid]="carteNum.invalid && (carteNum.touched)"
+              [class.is-valid]="carteNum.valid && (carteNum.dirty || carteNum.touched)" />
+            <div class="invalid-feedback">
+              Numéros de carte invalide !
+            </div>
           </div>
-          <div class="form-group col">
-            <label for="nom">Nom</label>
-            <input type="text" class="form-control" id="nom" formControlName="nom">
+          <div class="form-group col-2">
+            <label class="col" for="moisExpiration">Mois</label>
+            <input type="text" class="form-control" id="moisExpiration" placeholder="MM" formControlName="moisExpiration" 
+            [class.is-invalid]="moisExpiration.invalid && (moisExpiration.touched)"
+              [class.is-valid]="moisExpiration.valid && (moisExpiration.dirty || moisExpiration.touched)"/>
+              <div class="invalid-feedback">
+                Mois invalide !
+              </div>
+          </div>
+          <div class="form-group col-2">
+            <label for="anneeExpiration">Annee</label>
+            <input type="text" class="form-control" id="anneeExpiration" placeholder="AAAA"
+              formControlName="anneeExpiration" 
+              [class.is-invalid]="anneeExpiration.invalid && (anneeExpiration.touched)"
+              [class.is-valid]="anneeExpiration.valid && (anneeExpiration.dirty || anneeExpiration.touched)"/>
+              <div class="invalid-feedback">
+                Année invalide !
+              </div>
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-lg-3">
-            <label for="carteNum">Numéros Carte</label>
-            <input type="text" class="form-control" id="carteNum" formControlName="carteNum">
-          </div>
-          <div class="form-group col-lg-3 row">
-            <label class="col-12" for="carteExpiration">
-              Date Expiration</label>
-            <div class="col-xs-6 col-lg-6 pl-ziro">
-              <input type="text" class="form-control" id="moisExpiration" placeholder="MM" />
-            </div>
-            <div class="col-xs-6 col-lg-6 pl-ziro">
-              <input type="text" class="form-control" id="anneeExpiration" placeholder="AAAA" />
-            </div>
-          </div>
-          <div class="form-group col-lg-3">
+          <div class="form-group col-2">
             <label for="CCV">CCV</label>
-            <input type="number" class="form-control" id="ccv" placeholder="CCV">
+            <input type="text" class="form-control" id="ccv" placeholder="CCV" formControlName="ccv"
+            [class.is-invalid]="ccv.invalid && (ccv.touched)"
+              [class.is-valid]="ccv.valid && (ccv.dirty || carteNum.touched)">
+            <div class="invalid-feedback">
+              CCV invalide !
+            </div>
           </div>
         </div>
         <div class="form-group form-check">
