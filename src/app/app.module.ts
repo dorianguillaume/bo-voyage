@@ -7,11 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InMemoryDataService } from './shared/in-memory-data.service';
 import { VoyageListComponent } from './voyage-list/voyage-list.component';
+import { VoyageComponent } from './voyage/voyage.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VoyageListComponent
+    VoyageListComponent,
+    VoyageComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
