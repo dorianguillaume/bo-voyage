@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { VoyageComponent } from './voyage/voyage.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     FooterComponent,
     VoyageComponent,
-    ReservationComponent
+    ReservationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
