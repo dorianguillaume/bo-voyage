@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   match() {
     this.clients.forEach((c) => {
       if (this.loginForm.controls.mail.value === c.email && this.loginForm.controls.pswd.value === c.password) {
+        this.authService.setUser(c)
         this.authService.login();
         this.router.navigate(['**']);
       }
