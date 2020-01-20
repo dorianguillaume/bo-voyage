@@ -8,6 +8,7 @@ import {Formule} from '../model/formule';
 })
 export class FormuleService {
 
+  /* Instanciation du client HTTP */
   constructor(private httpClient: HttpClient) {
   }
 
