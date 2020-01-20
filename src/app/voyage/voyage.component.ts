@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { VoyageService } from '../shared/voyage.service';
 
 @Component({
   selector: 'app-voyage',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoyageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private voyageService: VoyageService ) { }
 
   ngOnInit() {
+
+    this.activatedRoute.paramMap.subscribe(
+      params => {
+        this.voyageService
+      }
+    )
   }
 
 }
