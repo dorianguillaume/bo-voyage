@@ -1,28 +1,32 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-9">
-      <form *ngIf="user" [formGroup]="userForm">
+      <form (ngSubmit)="update()"*ngIf="user" [formGroup]="userForm">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" formControlName="email" placeholder="Email">
+            <input type="email" class="form-control" id="inputEmail4" formControlName="email" placeholder="Email"
+            [class.is-invalid]="email.invalid && (email.touched)"
+            >
           </div>
           <div class="form-group col-md-6">
             <label for="inputTelephone">Téléphone</label>
             <input type="text" class="form-control" id="inputTelephone" formControlName="telephone"
-                   placeholder="Téléphone">
+                   placeholder="Téléphone"
+                   [class.is-invalid]="telephone.invalid && (telephone.touched)"
+                   >
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="customRadioInline1" name="civilite" class="custom-control-input"
-                     formControlName="civilite" value="M" [checked]="user.civilite === 'M' ">
+                     formControlName="civilite" value="M" >
               <label class="custom-control-label" for="customRadioInline1">Monsieur</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="customRadioInline2" name="civilite" class="custom-control-input"
-                     formControlName="civilite" value="Mme" [checked]="user.civilite === 'Mme'">
+                     formControlName="civilite" value="Mme" >
               <label class="custom-control-label" for="customRadioInline2">Madame</label>
             </div>
           </div>
@@ -30,31 +34,43 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nom">Nom</label>
-            <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Nom" [value]="user.nom">
+            <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Nom" 
+            [class.is-invalid]="nom.invalid && (nom.touched)"
+            >
           </div>
           <div class="form-group col-md-6">
             <label for="prenom">Prénom</label>
             <input type="text" class="form-control" formControlName="prenom" id="prenom" placeholder="Prenom"
-                   [value]="user.prenom">
+            [class.is-invalid]="prenom.invalid && (prenom.touched)"
+            >
           </div>
         </div>
         <div class="form-group">
           <label for="inputAddress">Adresse</label>
           <input type="text" class="form-control" formControlName="adresse" id="inputAddress"
-                 placeholder="12 rue du Bois" [value]="user.adresse">
+                 placeholder="12 rue du Bois" [class.is-invalid]="adresse.invalid && (adresse.touched)"
+                 >
         </div>
         <div class="form-row">
           <div class="form-group col">
             <label for="inputCity">Ville</label>
-            <input type="text" class="form-control" formControlName="ville" id="inputCity" [value]="user.ville">
+            <input type="text" class="form-control" formControlName="ville" id="inputCity" 
+            [class.is-invalid]="ville.invalid && (ville.touched)"
+            >
           </div>
           <div class="form-group col-md-2">
             <label for="inputZip">Code Postale</label>
             <input type="text" class="form-control" formControlName="codePostal" id="inputZip"
-                   [value]="user.code_postale">
+            [class.is-invalid]="codePostal.invalid && (codePostal.touched)"
+            >
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="update()">Modifier</button>
+        <div *ngIf="userForm.invalid"class="form-row justify-content-center">
+          <p class="text-danger text-center">Veuillez compléter entièrement vos informations !</p>
+        </div>
+        <div class="form-row justify-content-center">
+          <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Modifier</button>
+        </div>
       </form>
     </div>
   </div>

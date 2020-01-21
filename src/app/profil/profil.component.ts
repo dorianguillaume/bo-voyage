@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../shared/auth.service';
 import {ClientService} from '../shared/client.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -13,7 +15,7 @@ export class ProfilComponent implements OnInit {
   userForm;
   user;
 
-  constructor(private authService: AuthService, private clientService: ClientService) {
+  constructor(private authService: AuthService, private clientService: ClientService, private router: Router) {
   }
 
   ngOnInit() {
@@ -35,18 +37,52 @@ export class ProfilComponent implements OnInit {
     this.user.email = this.userForm.controls.email.value;
 
     this.clientService.update(this.user).subscribe();
+    this.router.navigate(['/voyages'])
+
   }
 
   initFormGroup() {
     this.userForm = new FormGroup({
-      email: new FormControl(this.user.email),
-      civilite: new FormControl(this.user.civilite),
-      telephone: new FormControl(this.user.telephone),
-      nom: new FormControl(this.user.nom),
-      prenom: new FormControl(this.user.prenom),
-      adresse: new FormControl(this.user.adresse),
-      ville: new FormControl(this.user.ville),
-      codePostal: new FormControl(this.user.code_postale)
+      email: new FormControl(this.user.email, [Validators.required, Validators.email]),
+      civilite: new FormControl(this.user.civilite, [Validators.required]),
+      telephone: new FormControl(this.user.telephone, [Validators.required, Validators.minLength(10), Validators.maxLength(10), CustomValidators.number]),
+      nom: new FormControl(this.user.nom, [Validators.required]),
+      prenom: new FormControl(this.user.prenom, [Validators.required]),
+      adresse: new FormControl(this.user.adresse, [Validators.required]),
+      ville: new FormControl(this.user.ville, [Validators.required]),
+      codePostal: new FormControl(this.user.code_postale, [Validators.required, Validators.minLength(5), Validators.maxLength(5), CustomValidators.number])
     });
+  }
+
+  get email(){
+    return this.userForm.controls.email
+  }
+
+  get nom(){
+    return this.userForm.controls.nom
+  }
+
+  get prenom(){
+    return this.userForm.controls.prenom
+  }
+
+  get civilite(){
+    return this.userForm.controls.civilite
+  }
+
+  get adresse(){
+    return this.userForm.controls.adresse
+  }
+
+  get telephone(){
+    return this.userForm.controls.telephone
+  }
+
+  get ville(){
+    return this.userForm.controls.ville
+  }
+
+  get codePostal(){
+    return this.userForm.controls.codePostal
   }
 }
