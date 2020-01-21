@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Formule} from '../model/formule';
@@ -30,5 +30,16 @@ export class FormuleService {
   /* Appel POST vers api/formules pour créer la formule passée en paramètre */
   create(formule) {
     return this.httpClient.post('api/formules', formule);
+  }
+
+  updatePlace(id, nb) {
+    this.find(id).subscribe((f) => {
+      if (f.nb_places >= nb) {
+        f.nb_places -= nb;
+        this.update(f).subscribe(() => console.log('maj effectuée'));
+        return true;
+      } else {
+        return false;
+      }});
   }
 }
