@@ -41,7 +41,6 @@ export class NewClientComponent implements OnInit {
 
   create() {
     this.user = new Voyageur(
-      this.usersLength++,
       this.userForm.controls.civilite.value,
       this.userForm.controls.nom.value,
       this.userForm.controls.prenom.value,
@@ -55,8 +54,9 @@ export class NewClientComponent implements OnInit {
 
     console.log(this.user);
 
-    this.clientService.create(this.user).subscribe(() => {
-      this.authService.setUser(this.user);
+    this.clientService.create(this.user).subscribe((u) => {
+      console.log(u);
+      this.authService.setUser(u);
       this.authService.login();
     });
   }

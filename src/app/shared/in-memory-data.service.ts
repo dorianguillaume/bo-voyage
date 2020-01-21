@@ -167,7 +167,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const voyageurs = [
       {
-        id: '1',
+        id: 1,
         civilite: 'M',
         nom: 'Smith',
         prenom: 'Jack',
@@ -180,7 +180,7 @@ export class InMemoryDataService implements InMemoryDbService {
         password: 'test'
       },
       {
-        id: '2',
+        id: 2,
         civilite: 'M',
         nom: 'M',
         prenom: 'mm',

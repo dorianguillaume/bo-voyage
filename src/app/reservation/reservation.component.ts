@@ -66,7 +66,7 @@ export class ReservationComponent implements OnInit {
       }
     )
   }
-  
+
   get accompagnants(): FormArray {
     return this.reservationForm.get('accompagnants') as FormArray
   }
@@ -102,9 +102,9 @@ export class ReservationComponent implements OnInit {
           err => console.log('Nope')
         );
 
-        
+
         this.accompagnants.value.forEach(accompagnant => {
-            this.clientService.create(new Voyageur(+this.voyageurs[this.voyageurs.length-1].id + 1, accompagnant.civilite, accompagnant.nom, accompagnant.prenom, accompagnant.naissance, accompagnant.tel, accompagnant.adresse, accompagnant.ville, accompagnant.code_postale, null, null)).subscribe(
+            this.clientService.create(new Voyageur(/*+this.voyageurs[this.voyageurs.length-1].id + 1,*/accompagnant.civilite, accompagnant.nom, accompagnant.prenom, accompagnant.naissance, accompagnant.tel, accompagnant.adresse, accompagnant.ville, accompagnant.code_postale, null, null)).subscribe(
               () => {console.log('valide')}
             )
           });

@@ -1,7 +1,7 @@
 export class Voyageur {
 
-  constructor(id: number, civilite: string, nom: string, prenom: string, date_naissance: Date, telephone: string, adresse: string, ville: string, code_postale: number, email: string, password: string) {
-    this.id = id;
+  constructor(civilite: string, nom: string, prenom: string, date_naissance: Date, telephone: string, adresse: string, ville: string, code_postale: number, email: string, password: string) {
+
     this.civilite = civilite;
     this.nom = nom;
     this.prenom = prenom;
