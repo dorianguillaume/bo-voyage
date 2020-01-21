@@ -3,8 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {ReservationService} from '../shared/reservation.service';
 import {Reservation} from '../model/reservation';
 import {AuthService} from '../shared/auth.service';
-import { FormuleService } from '../shared/formule.service';
-import { Formule } from '../model/formule';
+import {FormuleService} from '../shared/formule.service';
+import {Formule} from '../model/formule';
+import {Form} from '@angular/forms';
 
 @Component({
   selector: 'app-reservation-client',
@@ -16,9 +17,12 @@ export class ReservationClientComponent implements OnInit {
   reservations: Reservation[];
   formules: Formule[];
   reservationsClient = [];
+  formulesClient = [];
 
   constructor(private reservationService: ReservationService, private authService: AuthService, private formuleService: FormuleService) {
   }
+
+  dest = [];
 
   ngOnInit() {
     this.reservationService.getAll().subscribe(
@@ -29,16 +33,12 @@ export class ReservationClientComponent implements OnInit {
         this.reservations.forEach(reservation => {
           if (+reservation.id_client === +this.authService.user.id) {
             this.reservationsClient.push(reservation);
-          }});
-        
+            this.formuleService.find(reservation.id_formule).subscribe(
+              (formule) => {
+                this.dest.push(formule.destination.region);
+              });
+          }
+        });
       });
-  }
-
-  findFormule(id){
-    this.formuleService.find(id).subscribe(
-      formule => {
-        return formule
-      }
-    )
   }
 }

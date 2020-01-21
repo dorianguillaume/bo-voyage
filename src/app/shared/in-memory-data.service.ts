@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import {Injectable} from '@angular/core';
+import {InMemoryDbService} from 'angular-in-memory-web-api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InMemoryDataService implements InMemoryDbService {
 
-  constructor() { }
+  constructor() {
+  }
 
   createDb() {
 
@@ -193,9 +194,17 @@ export class InMemoryDataService implements InMemoryDbService {
       id: '1',
       id_client: '1',
       id_formule: '9',
-      date: new Date()
-    }];
+      date: new Date(),
+      assurance: true
+    },
+      {
+        id: '1',
+        id_client: '1',
+        id_formule: '9',
+        date: new Date(),
+        assurance: false
+      }];
 
-    return { formules, voyageurs, reservations };
+    return {formules, voyageurs, reservations};
   }
 }

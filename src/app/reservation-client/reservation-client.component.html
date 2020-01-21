@@ -2,11 +2,13 @@
     <div class="row justify-content-center">
         <div class="col-lg-5">
             <ul class="list-group" *ngIf="reservationsClient">
-                <li class="list-group-item" *ngFor="let reservation of reservationsClient">
+                <li class="list-group-item" *ngFor="let reservation of reservationsClient; let i = index">
                     <div>
                         <p>N° Dossier: <span class="font-weight-bold">{{reservation.id}}</span></p>
                         <p>Date Reservation : <span class="font-weight-light">{{reservation.date | date: "d MMMM yyyy": undefined: 'fr-fr'}}</span></p>
-                        <p>Destination : {{findFormule(reservation.id_formule   ).destination.region}}</p>
+                        <p>Destination : {{dest[i]}}</p>
+                      <button class="btn btn-danger" *ngIf="reservation.assurance">Annuler</button>
+                      <p *ngIf="!reservation.assurance">Vous n'avez pas pris d'assurance pour cette réservation</p>
                     </div>
                 </li>
             </ul>
