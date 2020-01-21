@@ -1,8 +1,13 @@
-body{
-    min-height: 100VH;
+.page-container{
+    position: relative;
+    min-height: 100vh;
 }
 
 footer{
-    position: fixed;
+    position: absolute;
     bottom: 0;
+}
+
+ngb-carousel img {
+    max-height: 400px;
 }

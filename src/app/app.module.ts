@@ -15,6 +15,14 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ReservationClientComponent } from './reservation-client/reservation-client.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { ProfilComponent } from './profil/profil.component';
+
+registerLocaleData(localeFr, 'fr');
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +33,8 @@ import { ReservationClientComponent } from './reservation-client/reservation-cli
     VoyageComponent,
     ReservationComponent,
     LoginComponent,
-    ReservationClientComponent
+    ReservationClientComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,8 @@ import { ReservationClientComponent } from './reservation-client/reservation-cli
     ReactiveFormsModule,
     CustomFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

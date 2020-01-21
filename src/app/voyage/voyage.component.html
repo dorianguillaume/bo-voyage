@@ -1,5 +1,36 @@
-<div class="container" *ngIf="voyage">
+<div class="container-fluid mt-md-5">
+    <div class="row align-items-center" *ngIf="voyage">
+        <div class="col-5">
+            <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let image of voyage.destination.images">
+                    <div class="picsum-img-wrapper">
+                        <img [src]="'/assets/' + image" alt="Random first slide">
+                    </div>
+                    <div class="carousel-caption">
+                        <h3>{{voyage.destination.region}}</h3>
+                        <p>A partir du {{voyage.date_depart | date: 'd MMMM y': undefined: 'fr-fr' }}</p>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+        <div class="card col">
+            <div class="card-body">
+                <h1 class="card-title">{{voyage.destination.region}}</h1>
+                <div class="card-text">
+                    <p>{{voyage.destination.description}}</p>
+                </div>
+                <button class="btn btn-primary" [routerLink]="['/reservation/', voyage.id ]">Réserver</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" *ngIf="voyage">
     <div class="row">
+        <div class="col-12">
+        </div>
+    </div>
+    <!-- <div class="row">
         <div class="col-12">
             <div class="card mx-auto" style="width: 18rem;">
                 <img [src]="'assets/'+voyage.destination.images[0]" class="card-img-top" alt="...">
@@ -9,5 +40,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

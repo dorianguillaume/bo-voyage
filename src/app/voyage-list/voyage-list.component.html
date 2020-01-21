@@ -1,14 +1,33 @@
-<div class="card-deck">
-  <div *ngFor="let formule of formules" class="card col-3">
-    <div class="card-body">
-      <h5 class="card-title">{{formule.destination.region}}</h5>
-      <p class="card-text">Voyage du {{formule.date_depart | date: 'dd/MM/yyyy hh:mm'}} au {{formule.date_retour | date: 'dd/MM/yyyy hh:mm'}}.
-        {{formule.nb_places}} places restantes.
-      <a [routerLink]="['/voyage', formule.id]">Détails</a>
-    </div>
-    <div class="card-footer">
-      <p>{{formule.prix_ht}}€</p>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="card-columns">
+        <div *ngFor="let formule of formules" class="card">
+          <img [src]="'/assets/' + formule.destination.images[0]" alt="formule.destination.images" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{formule.destination.region}}</h5>
+            <p class="card-text">
+              <span class="font-weight-light">{{formule.date_depart | date: 'dd-MM-yyyy'}} au
+                {{formule.date_retour | date: 'dd-MM-yyyy'}}</span><br/>
+                {{formule.destination.description}}
+
+            </p>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-between align-items-center">
+                <div>
+                  <p class="font-weight-bold m-0">{{formule.prix_ht}}€</p>
+                  <p class="font-weight-light m-0">{{formule.nb_places}} places restantes.</p>
+
+                </div>
+                <a class="btn btn-primary"[routerLink]="['/voyage', formule.id]">Détails</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
-

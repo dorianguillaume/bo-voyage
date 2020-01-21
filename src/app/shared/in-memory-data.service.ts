@@ -23,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
           region: 'Guadeloupe',
           description: 'Dans un site exceptionnel,en bordure d\'un petit lagon turquoise, tout est r\u00e9uni pour un s\u00e9jour paradisiaque. D\u00e9couvrez les merveilles de grande terre et de basse terre, les joies des plong\u00e9es dans la r\u00e9serve naturelle Cousteau.',
           deleted: '1',
-          images: ['guadeloupe_1.jpg'],
+          images: ['guadeloupe_1.jpg', 'guadeloupe_2.jpg'],
         },
         promotion: null
       }, {
@@ -38,7 +38,7 @@ export class InMemoryDataService implements InMemoryDbService {
           region: 'Guadeloupe',
           description: 'Dans un site exceptionnel,en bordure d\'un petit lagon turquoise, tout est r\u00e9uni pour un s\u00e9jour paradisiaque. D\u00e9couvrez les merveilles de grande terre et de basse terre, les joies des plong\u00e9es dans la r\u00e9serve naturelle Cousteau.',
           deleted: '1',
-          images: ['guadeloupe_1.jpg'],
+          images: ['guadeloupe_1.jpg', 'guadeloupe_2.jpg'],
         },
         promotion: null
       }, {
@@ -53,7 +53,7 @@ export class InMemoryDataService implements InMemoryDbService {
           region: 'Guadeloupe',
           description: 'Dans un site exceptionnel,en bordure d\'un petit lagon turquoise, tout est r\u00e9uni pour un s\u00e9jour paradisiaque. D\u00e9couvrez les merveilles de grande terre et de basse terre, les joies des plong\u00e9es dans la r\u00e9serve naturelle Cousteau.',
           deleted: '1',
-          images: ['guadeloupe_1.jpg'],
+          images: ['guadeloupe_1.jpg', 'guadeloupe_2.jpg'],
         },
         promotion: null
       }, {
@@ -143,7 +143,7 @@ export class InMemoryDataService implements InMemoryDbService {
           region: 'Guadeloupe',
           description: 'Dans un site exceptionnel,en bordure d\'un petit lagon turquoise, tout est r\u00e9uni pour un s\u00e9jour paradisiaque. D\u00e9couvrez les merveilles de grande terre et de basse terre, les joies des plong\u00e9es dans la r\u00e9serve naturelle Cousteau.',
           deleted: '1',
-          images: ['guadeloupe_1.jpg'],
+          images: ['guadeloupe_1.jpg', 'guadeloupe_2.jpg'],
         },
         promotion: null
       }, {
@@ -157,21 +157,33 @@ export class InMemoryDataService implements InMemoryDbService {
           id: '6',
           region: 'Bretagne',
           description: 'Tr\u00e8s belle r\u00e9gion, mer et campagne. Pays de l\u00e9gendes et des menhirs\r\n\t\r\n\t\r\n\t',
-          deleted: '0'
+          deleted: '0',
+          images: ['bretagne_1.jpg'],
         },
         promotion: null
       }
     ];
 
-    const voyageurs = [{
-      id: '2',
-      civilite: 'M',
-      nom: 'M',
-      prenom: 'mm',
-      date_naissance: '2000-01-01',
-      email: 'm@m.mmm',
-      password: 'm&ms'
-  }];
+    const voyageurs = [
+      {
+        id: '1',
+        civilite: 'M',
+        nom: 'Smith',
+        prenom: 'Jack',
+        date_naissance: '2000-01-01',
+        email: 'test',
+        password: 'test'
+      },
+      {
+        id: '2',
+        civilite: 'M',
+        nom: 'M',
+        prenom: 'mm',
+        date_naissance: '2000-01-01',
+        email: 'm@m.mmm',
+        password: 'm&ms'
+      }
+    ];
 
     const reservations = [{
       id: '1',
