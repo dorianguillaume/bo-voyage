@@ -195,15 +195,8 @@ export class InMemoryDataService implements InMemoryDbService {
       id_client: '1',
       id_formule: '9',
       date: new Date(),
-      assurance: true
-    },
-      {
-        id: '1',
-        id_client: '1',
-        id_formule: '9',
-        date: new Date(),
-        assurance: false
-      }];
+      est_assure: true,
+    }];
 
     return {formules, voyageurs, reservations};
   }

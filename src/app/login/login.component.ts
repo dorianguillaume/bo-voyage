@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       if (this.loginForm.controls.mail.value === c.email && this.loginForm.controls.pswd.value === c.password) {
         this.authService.setUser(c)
         this.authService.login();
-      }
+      } else this.error = true;
     });
   }
 }
