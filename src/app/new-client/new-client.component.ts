@@ -36,7 +36,7 @@ export class NewClientComponent implements OnInit {
       adresse: new FormControl('', [Validators.required]),
       telephone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), CustomValidators.number]),
       ville: new FormControl('', [Validators.required]),
-      codePostal: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)])
+      codePostal: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5), CustomValidators.number])
     });
   }
 
@@ -95,10 +95,7 @@ export class NewClientComponent implements OnInit {
       this.userForm.controls.email.value,
       this.userForm.controls.password.value);
 
-    console.log(this.user);
-
     this.clientService.create(this.user).subscribe((u) => {
-      console.log(u);
       this.authService.setUser(u);
       this.authService.login();
     });

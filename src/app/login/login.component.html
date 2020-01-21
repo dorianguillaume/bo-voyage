@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-5">
       <h2>Connexion</h2>
-      <form [formGroup]="loginForm">
+      <form (ngSubmit)="match()"[formGroup]="loginForm">
         <div class="form-group">
           <label for="mail">Mail</label>
           <input type="mail" class="form-control" id="mail" aria-describedby="emailHelp" formControlName="mail"
@@ -21,9 +21,12 @@
             Un mot de passe est requis !
           </div>
         </div>
-        <p>Pas de compte ? <a [routerLink]="'/new-user'">Créer votre compte !</a></p>
-        <p class="text-danger" *ngIf="error">Votre mot de passe et votre mail ne correspondent pas</p>
-        <button type="submit" class="btn btn-success" (click)="match()" [disabled]="loginForm.invalid">Valider</button>
+        <div class="form-row justify-content-center">
+        <p class="col-12 text-center">Pas de compte ? <a [routerLink]="'/new-user'">Créer votre compte !</a></p>
+        <p class="text-danger col-12 text-center" *ngIf="error">Votre mot de passe et votre mail ne correspondent pas</p>
+
+          <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Valider</button>
+        </div>
       </form>
     </div>
   </div>
