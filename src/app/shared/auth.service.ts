@@ -9,8 +9,9 @@ import {Voyageur} from '../model/voyageur';
 
 export class AuthService {
 
-  private isAuth = true;
-  public user = new Voyageur(1, 'Mr', 'test', 'test', new Date(), '0123456789', 'Nonya business', 'a', 'a');
+  private isAuth = false;
+  public user
+    //new Voyageur(1, 'Mr', 'test', 'test', new Date(), '0123456789', 'Nonya business', 'a', 'a');
 
   constructor(private router: Router, private clientService: ClientService) { }
 
@@ -23,7 +24,7 @@ export class AuthService {
   }
 
   setUser(user) {
-    this.user = user
+    this.user = user;
   }
 
   isAuthenticated() {
