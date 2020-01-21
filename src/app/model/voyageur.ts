@@ -1,7 +1,7 @@
 export class Voyageur {
 
 
-  constructor(id: number, civilite: string, nom: string, prenom: string, date_naissance: Date, telephone: string, adresse: string, email: string, password: string) {
+  constructor(id: number, civilite: string, nom: string, prenom: string, date_naissance: Date, telephone: string, adresse: string, ville: string, code_postale: number, email: string, password: string) {
     this.id = id;
     this.civilite = civilite;
     this.nom = nom;
@@ -9,6 +9,8 @@ export class Voyageur {
     this.date_naissance = date_naissance;
     this.telephone = telephone;
     this.adresse = adresse;
+    this.ville = ville;
+    this.code_postale = code_postale
     this.email = email;
     this.password = password;
   }
@@ -20,6 +22,8 @@ export class Voyageur {
   date_naissance: Date;
   telephone: string;
   adresse: string;
+  ville: string;
+  code_postale: number
   email: string;
   password: string;
 }

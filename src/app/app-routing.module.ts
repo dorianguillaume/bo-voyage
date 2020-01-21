@@ -6,6 +6,7 @@ import {ReservationComponent} from './reservation/reservation.component';
 import {AuthServiceGuard} from './auth/auth-service.guard';
 import {LoginComponent} from './login/login.component';
 import { ReservationClientComponent } from './reservation-client/reservation-client.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'mes-reservations',
     component: ReservationClientComponent,
+    canActivate: [AuthServiceGuard]
+  },
+  {
+    path: 'profil',
+    component: ProfilComponent,
     canActivate: [AuthServiceGuard]
   },
   {

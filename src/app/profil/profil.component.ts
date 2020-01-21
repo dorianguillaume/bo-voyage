@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
+import { ClientService } from '../shared/client.service';
 
 @Component({
   selector: 'app-profil',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor() { }
+  user
+
+  constructor(private authService: AuthService, private clientService: ClientService) { }
 
   ngOnInit() {
+    this.clientService.find(this.authService.user.id).subscribe(
+      user => {
+        this.user = user
+      }
+    )
   }
 
 }

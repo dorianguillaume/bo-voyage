@@ -171,6 +171,10 @@ export class InMemoryDataService implements InMemoryDbService {
         nom: 'Smith',
         prenom: 'Jack',
         date_naissance: '2000-01-01',
+        telephone: '0231860720',
+        adresse: '4 rue du Petit Clos',
+        ville: 'Caen',
+        code_postale: '14000',
         email: 'test',
         password: 'test'
       },

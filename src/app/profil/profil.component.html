@@ -1,1 +1,51 @@
-<p>profil works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-9">
+            <form *ngIf="user">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" [value]="user.email">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="civilite" class="custom-control-input" value="M" [checked]="user.civilite === 'M' ">
+                            <label class="custom-control-label" for="customRadioInline1">Monsieur</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="civilite" class="custom-control-input" value="Mme"[checked]="user.civilite === 'Mme'">
+                            <label class="custom-control-label" for="customRadioInline2">Madame</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" id="nom" placeholder="Nom" [value]="user.nom">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" id="prenom" placeholder="Prenom" [value]="user.prenom">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Adresse</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="12 rue du Bois" [value]="user.adresse">
+                </div>            
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="inputCity">Ville</label>
+                        <input type="text" class="form-control" id="inputCity" [value]="user.ville">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Code Postale</label>
+                        <input type="text" class="form-control" id="inputZip" [value]="user.code_postale">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
