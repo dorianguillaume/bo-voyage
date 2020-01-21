@@ -20,7 +20,7 @@
                     <label class="custom-control-label" [for]="i+'civiliteMme'">Madame</label>
                   </div>
                 </div>
-                <button type="button" (click)="delActor(i)" class="btn btn-danger">X</button>
+                <button type="button" (click)="delAccompagnant(i)" class="btn btn-danger">X</button>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-4">
@@ -60,7 +60,7 @@
             </div>
           </div>
           <p class="font-weight-light text-center col-12">Nombre de places restantes : {{nbPlaces}}</p>
-          <button type="button" class="btn btn-primary mb-3" (click)="addAccompagnant()" [disabled]="">Ajouter un
+          <button type="button" class="btn btn-primary mb-3" (click)="addAccompagnant()" [disabled]="nbPlaces === 0">Ajouter un
             accompagnant</button>
           <p class="font-weight-bold col-12 text-center">Prix HT : <span class="text-info">{{prixFinal}}</span> €</p>
         </div>

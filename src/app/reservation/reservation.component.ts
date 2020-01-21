@@ -94,7 +94,7 @@ export class ReservationComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(
       (params) => {
         //+params.get('id') ==> parseToInt
-        const reservation = new Reservation(+this.reservations[this.reservations.length-1].id + 1, this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value, this.prix, this.nbAccompagnant);
+        const reservation = new Reservation(+this.reservations[this.reservations.length-1].id + 1, this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value, this.prixFinal, this.nbAccompagnant);
         console.log(reservation);
 
         this.reservationService.create(reservation).subscribe(
@@ -119,6 +119,7 @@ export class ReservationComponent implements OnInit {
   addAccompagnant(){
     this.nbAccompagnant++
     this.nbPlaces--
+    
     this.prixFinal += this.prix
     this.accompagnants.push(new FormGroup({
       civilite: new FormControl('', [Validators.required]),
@@ -132,9 +133,10 @@ export class ReservationComponent implements OnInit {
     }))
   }
 
-  delActor(index){
+  delAccompagnant(index){
     this.nbPlaces++
     this.nbAccompagnant--
+    this.prixFinal -= this.prix
     this.accompagnants.removeAt(index)
   }
 
