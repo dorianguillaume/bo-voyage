@@ -127,12 +127,13 @@ export class ReservationComponent implements OnInit {
       nom: new FormControl('', [Validators.required]),
       prenom: new FormControl('', [Validators.required]),
       naissance: new FormControl('', [Validators.required]),
-      adresse: new FormControl(),
-      ville: new FormControl(),
-      code_postale: new FormControl(),
-      tel: new FormControl(),
+      adresse: new FormControl('', [Validators.required]),
+      ville: new FormControl('', [Validators.required]),
+      code_postale: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5), CustomValidators.number]),
+      tel: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), CustomValidators.number]),
     }))
   }
+
 
   delAccompagnant(index) {
     this.nbPlaces++

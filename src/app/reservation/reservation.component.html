@@ -110,7 +110,12 @@
           <input type="checkbox" class="form-check-input" id="assurance" formControlName="assurance">
           <label class="form-check-label" for="assurance">Souscrire à l'assurance annulation</label>
         </div>
-        <button type="submit" class="btn btn-success" [disabled]="reservationForm.invalid">Valider</button>
+        <div *ngIf="reservationForm.invalid"class="form-row justify-content-center">
+          <p class="text-danger text-center">Veuillez compléter l'ensemble des champs de la carte bleue et des accompagants (Telephone 8 chiffres, Code Postale 5 chiffres) avant de pouvoir valider la réservation</p>
+        </div>
+        <div class="form-row justify-content-center">
+          <button type="submit" class="btn btn-success" [disabled]="reservationForm.invalid">Valider</button>
+        </div>
       </form>
     </div>
   </div>
