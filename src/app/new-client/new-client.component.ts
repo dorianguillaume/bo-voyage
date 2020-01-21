@@ -49,5 +49,9 @@ export class NewClientComponent implements OnInit {
       this.userForm.codePostal,
       this.userForm.email,
       this.userForm.password);
+    
+    this.clientService.create(this.user).subscribe();
   }
+
+
 }
