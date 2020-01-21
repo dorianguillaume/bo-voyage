@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group col-md-4">
                   <label for="naissance">Date de Naissance</label>
-                  <input type="date" class="form-control" formControlName="naissance" placeholder="Prenom">
+                  <input type="date" class="form-control" formControlName="naissance" placeholder="Prenom" (change)="isEnfant($event)">
                 </div>
               </div>
               <div class="form-row">
