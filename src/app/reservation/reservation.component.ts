@@ -20,8 +20,10 @@ export class ReservationComponent implements OnInit {
   reservationForm: FormGroup;
   nbPlaces: number
   nbAccompagnant = 0
-  prix
+  prix: number
+  prixFinal: number
   voyageurs: Voyageur[]
+  reservations: Reservation []
 
   constructor(private activatedRoute: ActivatedRoute, private reservationService: ReservationService,
               private authService: AuthService, private router: Router, private formuleService: FormuleService, private clientService: ClientService) {
@@ -43,9 +45,24 @@ export class ReservationComponent implements OnInit {
         this.formuleService.find(params.get('id')).subscribe(
           formule => {
             this.nbPlaces = --formule.nb_places
-            this.prix = formule.prix_ht
+            this.prix = +formule.prix_ht
+            this.prixFinal = this.prix
           }
         )
+      }
+    )
+
+    //Pour récupérer id du dernier client
+    this.clientService.getAll().subscribe(
+      voyageurs => {
+        this.voyageurs = voyageurs
+      }
+    )
+
+    //Pour récupérer l'id de la dernière reservation
+    this.reservationService.getAll().subscribe(
+      reservations => {
+        this.reservations = reservations
       }
     )
   }
@@ -77,7 +94,7 @@ export class ReservationComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(
       (params) => {
         //+params.get('id') ==> parseToInt
-        const reservation = new Reservation(1, this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value, this.prix, this.nbAccompagnant);
+        const reservation = new Reservation(+this.reservations[this.reservations.length-1].id + 1, this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value, this.prix, this.nbAccompagnant);
         console.log(reservation);
 
         this.reservationService.create(reservation).subscribe(
@@ -85,14 +102,9 @@ export class ReservationComponent implements OnInit {
           err => console.log('Nope')
         );
 
-        //Pour récupérer id du dernier client
-        this.clientService.getAll().subscribe(
-          voyageurs => {
-            this.voyageurs = voyageurs
-          }
-        )
-        this.accompagnants.value.array.forEach(accompagnant => {
-            this.clientService.create(new Voyageur(this.voyageurs[this.voyageurs.length].id + 1, accompagnant.civilite, accompagnant.nom, accompagnant.prenom, accompagnant.naissance, accompagnant.tel, accompagnant.adresse, accompagnant.ville, accompagnant.code_postale, null, null)).subscribe(
+        
+        this.accompagnants.value.forEach(accompagnant => {
+            this.clientService.create(new Voyageur(+this.voyageurs[this.voyageurs.length-1].id + 1, accompagnant.civilite, accompagnant.nom, accompagnant.prenom, accompagnant.naissance, accompagnant.tel, accompagnant.adresse, accompagnant.ville, accompagnant.code_postale, null, null)).subscribe(
               () => {console.log('valide')}
             )
           });
@@ -100,13 +112,14 @@ export class ReservationComponent implements OnInit {
         this.formuleService.updatePlace(+params.get('id'), this.nbAccompagnant+1)
 
 
-        //this.router.navigate(['success']);
+        this.router.navigate(['/mes-reservations']);
       });
   }
 
   addAccompagnant(){
     this.nbAccompagnant++
     this.nbPlaces--
+    this.prixFinal += this.prix
     this.accompagnants.push(new FormGroup({
       civilite: new FormControl('', [Validators.required]),
       nom: new FormControl('', [Validators.required]),
