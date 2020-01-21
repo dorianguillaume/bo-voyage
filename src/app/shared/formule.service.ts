@@ -37,9 +37,7 @@ export class FormuleService {
       if (f.nb_places >= nb) {
         f.nb_places -= nb;
         this.update(f).subscribe(() => console.log('maj effectuée'));
-        return true;
-      } else {
-        return false;
-      }});
+      };
+    })
   }
 }
