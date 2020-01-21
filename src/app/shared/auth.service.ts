@@ -9,7 +9,7 @@ import {Voyageur} from '../model/voyageur';
 
 export class AuthService {
 
-  previousURL: string = '';
+  previousURL = '/**';
   private isAuth = false;
   public user;
 
@@ -17,13 +17,12 @@ export class AuthService {
 
   login() {
     this.isAuth = true;
-    if (this.previousURL !== '') {
-      this.router.navigate([this.previousURL]);
-    }
+    this.router.navigate([this.previousURL]);
   }
 
   logout() {
     this.isAuth = false;
+    this.previousURL = '/**';
     this.router.navigate(['/voyages']);
     this.user = null;
   }
