@@ -6,20 +6,20 @@
         <div class="form-group">
           <label for="mail">Mail</label>
           <input type="mail" class="form-control" id="mail" aria-describedby="emailHelp" formControlName="mail"
-          [class.is-invalid]="mail.invalid && (mail.touched)"
-              [class.is-valid]="mail.valid && (mail.dirty || mail.touched)" >
-              <div class="invalid-feedback">
-                Veuillez indiquer un mail valide !
-              </div>
+            [class.is-invalid]="mail.invalid && (mail.touched)"
+            [class.is-valid]="mail.valid && (mail.dirty || mail.touched)">
+          <div class="invalid-feedback">
+            Veuillez indiquer un mail valide !
+          </div>
         </div>
         <div class="form-group">
           <label for="pswd">Mot de passe</label>
           <input type="password" class="form-control" id="pswd" formControlName="pswd"
-          [class.is-invalid]="pswd.invalid && (pswd.touched)"
-              [class.is-valid]="pswd.valid && (pswd.dirty || pswd.touched)" >
-              <div class="invalid-feedback">
-                Un mot de passe est requis !
-              </div>
+            [class.is-invalid]="pswd.invalid && (pswd.touched)"
+            [class.is-valid]="pswd.valid && (pswd.dirty || pswd.touched)">
+          <div class="invalid-feedback">
+            Un mot de passe est requis !
+          </div>
         </div>
         <p>Pas de compte ? <a [routerLink]="'/new-user'">Créer votre compte !</a></p>
         <p class="text-danger" *ngIf="error">Votre mot de passe et votre mail ne correspondent pas</p>

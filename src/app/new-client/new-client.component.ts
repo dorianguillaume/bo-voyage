@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ClientService} from '../shared/client.service';
 import {Voyageur} from '../model/voyageur';
 import {Router} from '@angular/router';
 import {AuthService} from '../shared/auth.service';
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector: 'app-new-client',
@@ -26,18 +27,60 @@ export class NewClientComponent implements OnInit {
 
   initFormGroup() {
     this.userForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
-      nom: new FormControl(''),
-      prenom: new FormControl(''),
-      civilite: new FormControl(''),
-      naissance: new FormControl(''),
-      adresse: new FormControl(''),
-      telephone: new FormControl(''),
-      ville: new FormControl(''),
-      codePostal: new FormControl('')
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      nom: new FormControl('', [Validators.required]),
+      prenom: new FormControl('', [Validators.required]),
+      civilite: new FormControl('', [Validators.required]),
+      naissance: new FormControl('', [Validators.required]),
+      adresse: new FormControl('', [Validators.required]),
+      telephone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), CustomValidators.number]),
+      ville: new FormControl('', [Validators.required]),
+      codePostal: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)])
     });
   }
+
+  get email(){
+    return this.userForm.controls.email
+  }
+
+  get password(){
+    return this.userForm.controls.password
+  }
+
+  get nom(){
+    return this.userForm.controls.nom
+  }
+
+  get prenom(){
+    return this.userForm.controls.prenom
+  }
+
+  get civilite(){
+    return this.userForm.controls.civilite
+  }
+
+  get naissance(){
+    return this.userForm.controls.naissance
+  }
+
+  get adresse(){
+    return this.userForm.controls.adresse
+  }
+
+  get telephone(){
+    return this.userForm.controls.telephone
+  }
+
+  get ville(){
+    return this.userForm.controls.ville
+  }
+
+  get codePostal(){
+    return this.userForm.controls.codePostal
+  }
+
+
 
   create() {
     this.user = new Voyageur(

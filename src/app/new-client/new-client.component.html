@@ -1,70 +1,116 @@
-<div class="container-fluid">
+<div class="container-fluid mb-3">
   <div class="row justify-content-center">
-    <div class="col-9">
+    <div class="col-md-9">
       <form [formGroup]="userForm">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail">Email</label>
-            <input type="email" class="form-control" id="inputEmail" formControlName="email" placeholder="Email">
+            <input type="email" class="form-control" id="inputEmail" formControlName="email" placeholder="Email"
+              [class.is-invalid]="email.invalid && (email.touched)"
+              [class.is-valid]="email.valid && (email.dirty || email.touched)">
+            <div class="invalid-feedback">
+              Veuillez indiquer un mail valide !
+            </div>
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword">Mot de passe</label>
-            <input type="text" class="form-control" id="inputPassword" formControlName="password"
-                   placeholder="Mot de passe">
+            <input type="password" class="form-control" id="inputPassword" formControlName="password"
+              placeholder="Mot de passe" [class.is-invalid]="password.invalid && (password.touched)"
+              [class.is-valid]="password.valid && (password.dirty || password.touched)">
+            <div class="invalid-feedback">
+              Minimum 4 caractère !
+            </div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nom">Nom</label>
-            <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Nom">
+            <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Nom"
+              [class.is-invalid]="nom.invalid && (nom.touched)"
+              [class.is-valid]="nom.valid && (nom.dirty || nom.touched)">
+            <div class="invalid-feedback">
+              Veuillez indiquer votre Nom !
+            </div>
           </div>
           <div class="form-group col-md-6">
             <label for="prenom">Prénom</label>
-            <input type="text" class="form-control" formControlName="prenom" id="prenom" placeholder="Prenom">
+            <input type="text" class="form-control" formControlName="prenom" id="prenom" placeholder="Prenom"
+            [class.is-invalid]="prenom.invalid && (prenom.touched)"
+            [class.is-valid]="prenom.valid && (prenom.dirty || prenom.touched)" >
+            <div class="invalid-feedback">
+              Veuillez indiquer votre Prenom !
+            </div>
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6 d-flex align-items-center">
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="customRadioInline1" name="civilite" class="custom-control-input"
-                     formControlName="civilite" value="M">
+                formControlName="civilite" value="M">
               <label class="custom-control-label" for="customRadioInline1">Monsieur</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
               <input type="radio" id="customRadioInline2" name="civilite" class="custom-control-input"
-                     formControlName="civilite" value="Mme">
+                formControlName="civilite" value="Mme">
               <label class="custom-control-label" for="customRadioInline2">Madame</label>
             </div>
           </div>
           <div class="form-group col-md-6">
             <label for="inputNaissance">Date de naissance</label>
-            <input type="date" class="form-control" id="inputNaissance" formControlName="naissance">
+            <input type="date" class="form-control" id="inputNaissance" formControlName="naissance"
+            [class.is-invalid]="naissance.invalid && (naissance.touched)"
+            [class.is-valid]="naissance.valid && (naissance.dirty || naissance.touched)" >
+            <div class="invalid-feedback">
+              Veuillez indiquer votre date de naissance !
+            </div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputAddress">Adresse</label>
             <input type="text" class="form-control" formControlName="adresse" id="inputAddress"
-                   placeholder="12 rue du Bois">
+              placeholder="12 rue du Bois"
+              [class.is-invalid]="adresse.invalid && (adresse.touched)"
+            [class.is-valid]="adresse.valid && (adresse.dirty || adresse.touched)" >
+            <div class="invalid-feedback">
+              Veuillez indiquer votre adresse !
+            </div>
           </div>
           <div class="form-group col-md-6">
             <label for="inputTelephone">Téléphone</label>
-            <input type="text" class="form-control" id="inputTelephone" formControlName="telephone"
-                   placeholder="Téléphone">
+            <input type="telephone" class="form-control" id="inputTelephone" formControlName="telephone"
+              placeholder="Téléphone"
+              [class.is-invalid]="telephone.invalid && (telephone.touched)"
+            [class.is-valid]="telephone.valid && (telephone.dirty || telephone.touched)" >
+            <div class="invalid-feedback">
+              Veuillez indiquer votre numero de téléphone (8 chiffres) !
+            </div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col">
             <label for="inputCity">Ville</label>
-            <input type="text" class="form-control" formControlName="ville" id="inputCity">
+            <input type="text" class="form-control" formControlName="ville" id="inputCity" placeholder="Paris"
+            [class.is-invalid]="ville.invalid && (ville.touched)"
+            [class.is-valid]="ville.valid && (ville.dirty || ville.touched)" >
+            <div class="invalid-feedback">
+              Veuillez indiquer votre ville !
+            </div>
           </div>
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-3">
             <label for="inputZip">Code Postal</label>
-            <input type="text" class="form-control" formControlName="codePostal" id="inputZip">
+            <input type="text" class="form-control" formControlName="codePostal" id="inputZip" placeholder="75000"
+            [class.is-invalid]="codePostal.invalid && (codePostal.touched)"
+            [class.is-valid]="codePostal.valid && (codePostal.dirty || codePostal.touched)" >
+            <div class="invalid-feedback">
+              Votre code postale (5 Chiffres) !
+            </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="create()">Créer</button>
-        </form>
+        <div class="form-row justify-content-center">
+            <button type="submit" class="btn btn-primary" (click)="create()" [disabled]="userForm.invalid">Créer</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
