@@ -21,7 +21,7 @@
                 Un mot de passe est requis !
               </div>
         </div>
-        <p>Pas de compte ? <a [routerLink]="'/profil'">Créer votre compte !</a></p>
+        <p>Pas de compte ? <a [routerLink]="'/new-user'">Créer votre compte !</a></p>
         <p class="text-danger" *ngIf="error">Votre mot de passe et votre mail ne correspondent pas</p>
         <button type="submit" class="btn btn-success" (click)="match()" [disabled]="loginForm.invalid">Valider</button>
       </form>

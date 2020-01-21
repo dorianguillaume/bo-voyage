@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ClientService} from '../shared/client.service';
 import {Voyageur} from '../model/voyageur';
+import {Router} from '@angular/router';
+import {AuthService} from '../shared/auth.service';
 
 @Component({
   selector: 'app-new-client',
@@ -12,9 +14,10 @@ export class NewClientComponent implements OnInit {
 
   user;
   userForm;
-  usersLength
+  usersLength;
 
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService, private route: Router, private authService: AuthService) {
+  }
 
   ngOnInit() {
     this.initFormGroup();
@@ -39,19 +42,22 @@ export class NewClientComponent implements OnInit {
   create() {
     this.user = new Voyageur(
       this.usersLength++,
-      this.userForm.civilite,
-      this.userForm.nom,
-      this.userForm.prenom,
-      this.userForm.naissance,
-      this.userForm.telephone,
-      this.userForm.adresse,
-      this.userForm.ville,
-      this.userForm.codePostal,
-      this.userForm.email,
-      this.userForm.password);
-    
-    this.clientService.create(this.user).subscribe();
+      this.userForm.controls.civilite.value,
+      this.userForm.controls.nom.value,
+      this.userForm.controls.prenom.value,
+      this.userForm.controls.naissance.value,
+      this.userForm.controls.telephone.value,
+      this.userForm.controls.adresse.value,
+      this.userForm.controls.ville.value,
+      this.userForm.controls.codePostal.value,
+      this.userForm.controls.email.value,
+      this.userForm.controls.password.value);
+
+    console.log(this.user);
+
+    this.clientService.create(this.user).subscribe(() => {
+      this.authService.setUser(this.user);
+      this.authService.login();
+    });
   }
-
-
 }
