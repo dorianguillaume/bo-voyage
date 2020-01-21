@@ -8,6 +8,7 @@ import {LoginComponent} from './login/login.component';
 import { ReservationClientComponent } from './reservation-client/reservation-client.component';
 import { ProfilComponent } from './profil/profil.component';
 import {NewClientComponent} from './new-client/new-client.component';
+import { SuccessDeleteReservationComponent } from './success-delete-reservation/success-delete-reservation.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'new-user',
     component: NewClientComponent,
+  },
+  {
+    path: 'suppression-reservation',
+    component: SuccessDeleteReservationComponent
   },
   {
     path: '**',

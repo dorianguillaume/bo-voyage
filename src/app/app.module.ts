@@ -20,6 +20,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { ProfilComponent } from './profil/profil.component';
 import { NewClientComponent } from './new-client/new-client.component';
+import { SuccessDeleteReservationComponent } from './success-delete-reservation/success-delete-reservation.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -36,7 +37,8 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ReservationClientComponent,
     ProfilComponent,
-    NewClientComponent
+    NewClientComponent,
+    SuccessDeleteReservationComponent
   ],
   imports: [
     BrowserModule,

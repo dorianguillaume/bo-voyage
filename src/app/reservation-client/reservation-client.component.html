@@ -1,18 +1,24 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-lg-5">
+        <div class="col-lg-10">
             <ul class="list-group" *ngIf="reservationsClient">
-                <li class="list-group-item" *ngFor="let reservation of reservationsClient; let i = index">
+                <li class="list-group-item d-flex align-items-center justify-content-between" *ngFor="let reservation of reservationsClient; let i = index">
                     <div>
                         <p>N° Dossier: <span class="font-weight-bold">{{reservation.id}}</span></p>
                         <p>Date Reservation : <span class="font-weight-light">{{reservation.date | date: "d MMMM yyyy": undefined: 'fr-fr'}}</span></p>
                         <p>Destination : {{dest[i]}}</p>
-                      <button class="btn btn-danger" *ngIf="reservation.est_assure" (click)="deleteReservation(reservation.id)">Annuler</button>
-                      <p *ngIf="!reservation.est_assure">Vous n'avez pas pris d'assurance pour cette réservation</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-danger" *ngIf="reservation.est_assure" (click)="deleteReservation(reservation.id)">Annuler</button>
+                        <p *ngIf="!reservation.est_assure">Vous n'avez pas pris d'assurance pour cette réservation</p>
                     </div>
                 </li>
             </ul>
-            <p *ngIf="reservationsClient.length === 0">Vous n'avez aucune réservation ...</p>
+            <div class="card" *ngIf="reservationsClient.length === 0">
+                <div class="card-body">
+                    <p class="text-center">Vous n'avez aucune réservation ...</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ import {AuthService} from '../shared/auth.service';
 import {FormuleService} from '../shared/formule.service';
 import {Formule} from '../model/formule';
 import {Form} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-client',
@@ -19,7 +20,7 @@ export class ReservationClientComponent implements OnInit {
   reservationsClient = [];
   formulesClient = [];
 
-  constructor(private reservationService: ReservationService, private authService: AuthService, private formuleService: FormuleService) {
+  constructor(private reservationService: ReservationService, private authService: AuthService, private formuleService: FormuleService, private router: Router) {
   }
 
   dest = [];
@@ -44,5 +45,7 @@ export class ReservationClientComponent implements OnInit {
 
   deleteReservation(id) {
     this.reservationService.delete(id).subscribe((d) => console.log(d), () => console.log('error'));
+    this.router.navigate(['/suppression-reservation'])
+
   }
 }
