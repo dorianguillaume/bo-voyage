@@ -46,14 +46,21 @@ export class ReservationComponent implements OnInit {
     return this.reservationForm.controls.ccv;
   }
 
+  getAssurance() {
+    return this.reservationForm.controls.assurance;
+  }
+
   addReservation() {
     this.activatedRoute.paramMap.subscribe(
       (params) => {
         //+params.get('id') ==> parseToInt
-        const reservation = new Reservation(1, this.authService.user.id, +params.get('id'), new Date());
+        const reservation = new Reservation(1, this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value);
         console.log(reservation);
 
-        this.reservationService.create(reservation).subscribe();
+        this.reservationService.create(reservation).subscribe(
+          response => console.log('Objet créé'),
+          err => console.log('Nope')
+        );
 
         this.router.navigate(['success']);
       });

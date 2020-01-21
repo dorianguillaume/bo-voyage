@@ -9,23 +9,31 @@ import {Voyageur} from '../model/voyageur';
 
 export class AuthService {
 
+  previousURL: string = '';
   private isAuth = false;
-  public user
-    //new Voyageur(1, 'Mr', 'test', 'test', new Date(), '0123456789', 'Nonya business', 'a', 'a');
+  public user;
 
   constructor(private router: Router, private clientService: ClientService) { }
 
   login() {
     this.isAuth = true;
+    if (this.previousURL !== '') {
+      this.router.navigate([this.previousURL]);
+    }
   }
 
   logout() {
     this.isAuth = false;
+    this.router.navigate(['/voyages']);
     this.user = null;
   }
 
   setUser(user) {
     this.user = user;
+  }
+
+  setURL(p) {
+    this.previousURL = p;
   }
 
   isAuthenticated() {

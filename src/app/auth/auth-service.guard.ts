@@ -8,8 +8,6 @@ import {AuthService} from '../shared/auth.service';
 
 export class AuthServiceGuard implements CanActivate {
 
-  previousUrl;
-
   constructor(private authservice: AuthService, private router: Router) {
 
   }
@@ -19,7 +17,7 @@ export class AuthServiceGuard implements CanActivate {
 
     if (!isAuth) {
       /* Récupère l'URL de la page avant redirection */
-      this.previousUrl = this.router.getCurrentNavigation().initialUrl.toString();
+      this.authservice.setURL(this.router.getCurrentNavigation().initialUrl.toString());
       this.router.navigate(['/login']);
     }
     return isAuth;
