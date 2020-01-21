@@ -41,4 +41,10 @@ export class ReservationClientComponent implements OnInit {
         });
       });
   }
+
+  deleteReservation(id) {
+    this.formuleService.find(id).subscribe((f) => console.log(f));
+    this.reservationService.delete(id).subscribe((d) => console.log('success'), () => console.log('error'));
+    this.formuleService.find(id).subscribe((f) => console.log(f));
+  }
 }

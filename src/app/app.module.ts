@@ -19,6 +19,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { ProfilComponent } from './profil/profil.component';
+import { NewClientComponent } from './new-client/new-client.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -34,7 +35,8 @@ registerLocaleData(localeFr, 'fr');
     ReservationComponent,
     LoginComponent,
     ReservationClientComponent,
-    ProfilComponent
+    ProfilComponent,
+    NewClientComponent
   ],
   imports: [
     BrowserModule,

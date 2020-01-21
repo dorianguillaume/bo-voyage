@@ -22,13 +22,12 @@ export class ProfilComponent implements OnInit {
         this.user = user;
         this.initFormGroup();
       });
-
-
   }
 
   update() {
     this.user.civilite = this.userForm.controls.civilite.value;
     this.user.nom = this.userForm.controls.nom.value;
+    this.user.telephone = this.userForm.controls.telephone.value;
     this.user.prenom = this.userForm.controls.prenom.value;
     this.user.adresse = this.userForm.controls.adresse.value;
     this.user.ville = this.userForm.controls.ville.value;
@@ -42,6 +41,7 @@ export class ProfilComponent implements OnInit {
     this.userForm = new FormGroup({
       email: new FormControl(this.user.email),
       civilite: new FormControl(this.user.civilite),
+      telephone: new FormControl(this.user.telephone),
       nom: new FormControl(this.user.nom),
       prenom: new FormControl(this.user.prenom),
       adresse: new FormControl(this.user.adresse),

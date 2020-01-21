@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <form [formGroup]="userForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" formControlName="email" placeholder="Email">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword">Mot de passe</label>
+            <input type="text" class="form-control" id="inputPassword" formControlName="password"
+                   placeholder="Mot de passe">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Nom">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="prenom">Prénom</label>
+            <input type="text" class="form-control" formControlName="prenom" id="prenom" placeholder="Prenom">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline1" name="civilite" class="custom-control-input"
+                     formControlName="civilite" value="M">
+              <label class="custom-control-label" for="customRadioInline1">Monsieur</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="customRadioInline2" name="civilite" class="custom-control-input"
+                     formControlName="civilite" value="Mme">
+              <label class="custom-control-label" for="customRadioInline2">Madame</label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputNaissance">Date de naissance</label>
+            <input type="date" class="form-control" id="inputNaissance" formControlName="naissance">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputAddress">Adresse</label>
+            <input type="text" class="form-control" formControlName="adresse" id="inputAddress"
+                   placeholder="12 rue du Bois">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputTelephone">Téléphone</label>
+            <input type="text" class="form-control" id="inputTelephone" formControlName="telephone"
+                   placeholder="Téléphone">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="inputCity">Ville</label>
+            <input type="text" class="form-control" formControlName="ville" id="inputCity">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Code Postale</label>
+            <input type="text" class="form-control" formControlName="codePostal" id="inputZip">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="create()">Modifier</button>
+        </form>
+    </div>
+  </div>
+</div>

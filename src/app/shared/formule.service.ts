@@ -32,6 +32,10 @@ export class FormuleService {
     return this.httpClient.post('api/formules', formule);
   }
 
+  delete(id) {
+    return this.httpClient.delete('api/formules/' + id);
+  }
+
   updatePlace(id, nb) {
     this.find(id).subscribe((f) => {
       if (f.nb_places >= nb) {
