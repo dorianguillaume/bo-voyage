@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Reservation} from '../model/reservation';
 
@@ -7,6 +7,12 @@ import {Reservation} from '../model/reservation';
   providedIn: 'root'
 })
 export class ReservationService {
+  // Http Options
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private httpClient: HttpClient) {
   }
@@ -28,6 +34,6 @@ export class ReservationService {
   }
 
   delete(id): Observable<{}> {
-    return this.httpClient.delete('api/reservations/' + id);
+    return this.httpClient.delete<Reservation>('api/reservations/' + id, this.httpOptions);
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ReservationService} from '../shared/reservation.service';
 import {Reservation} from '../model/reservation';
 import {AuthService} from '../shared/auth.service';
@@ -44,5 +44,5 @@ export class ReservationClientComponent implements OnInit {
 
   deleteReservation(id) {
     this.reservationService.delete(id).subscribe((d) => console.log(d), () => console.log('error'));
-  } 
+  }
 }

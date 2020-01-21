@@ -24,7 +24,7 @@ export class ReservationComponent implements OnInit {
   prixFinal: number
   voyageurs: Voyageur[]
   reservations: Reservation[]
-  
+
 
   constructor(private activatedRoute: ActivatedRoute, private reservationService: ReservationService,
     private authService: AuthService, private router: Router, private formuleService: FormuleService, private clientService: ClientService) {
