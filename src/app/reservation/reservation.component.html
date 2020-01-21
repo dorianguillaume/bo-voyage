@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mb-3">
   <div class="row justify-content-center">
     <div class="col-lg-9 col">
       <form (ngSubmit)="addReservation()" [formGroup]="reservationForm">
@@ -10,12 +10,12 @@
               <div class="form-row d-flex justify-content-between">
                 <div class="d-flex align-items-center">
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" [id]="i+'civiliteM'" name="civilite" class="custom-control-input"
+                    <input type="radio" [id]="i+'civiliteM'"  class="custom-control-input"
                       formControlName="civilite" value="M">
                     <label class="custom-control-label" [for]="i+'civiliteM'">Monsieur</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" [id]="i+'civiliteMme'" name="civilite" class="custom-control-input"
+                    <input type="radio" [id]="i+'civiliteMme'" class="custom-control-input"
                       formControlName="civilite" value="Mme">
                     <label class="custom-control-label" [for]="i+'civiliteMme'">Madame</label>
                   </div>
@@ -111,7 +111,7 @@
           <label class="form-check-label" for="assurance">Souscrire à l'assurance annulation</label>
         </div>
         <div *ngIf="reservationForm.invalid"class="form-row justify-content-center">
-          <p class="text-danger text-center">Veuillez compléter l'ensemble des champs de la carte bleue et des accompagants (Telephone 8 chiffres, Code Postale 5 chiffres) avant de pouvoir valider la réservation</p>
+          <p class="text-danger text-center">Veuillez compléter l'ensemble des champs de la carte bleue et des accompagants (Telephone 10 chiffres, Code Postale 5 chiffres) avant de pouvoir valider la réservation</p>
         </div>
         <div class="form-row justify-content-center">
           <button type="submit" class="btn btn-success" [disabled]="reservationForm.invalid">Valider</button>

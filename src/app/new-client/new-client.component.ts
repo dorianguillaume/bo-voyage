@@ -15,14 +15,13 @@ export class NewClientComponent implements OnInit {
 
   user;
   userForm;
-  usersLength;
 
   constructor(private clientService: ClientService, private route: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
     this.initFormGroup();
-    this.clientService.getAll().subscribe((c) => this.usersLength = c.length + 1);
+    
   }
 
   initFormGroup() {

@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       pswd: new FormControl('', [Validators.required])
     });
 
+    //On récupère tout les clients enregistré pour comparer avec la fonction match()
     this.clientService.getAll().subscribe((clients) => {
       this.clients = clients;
     });
@@ -40,6 +41,8 @@ export class LoginComponent implements OnInit {
 
   match() {
     this.clients.forEach((c) => {
+
+      //Si c'est valide on enregistre l'utilisateur et on le log
       if (this.loginForm.controls.mail.value === c.email && this.loginForm.controls.pswd.value === c.password) {
         this.authService.setUser(c)
         this.authService.login();

@@ -22,8 +22,7 @@ export class ReservationComponent implements OnInit {
   nbAccompagnant = 0;
   prix: number;
   prixFinal: number;
-  voyageurs: Voyageur[];
-  reservations: Reservation[];
+  prixEnfant: number
 
 
   constructor(private activatedRoute: ActivatedRoute, private reservationService: ReservationService,
@@ -40,29 +39,17 @@ export class ReservationComponent implements OnInit {
       assurance: new FormControl()
     });
 
+    //On récupère le nombre de place et le prix de la formule
     this.activatedRoute.paramMap.subscribe(
       params => {
         this.formuleService.find(params.get('id')).subscribe(
           formule => {
             this.nbPlaces = --formule.nb_places;
             this.prix = +formule.prix_ht;
+            this.prixEnfant = this.prix * 0.6
             this.prixFinal = this.prix;
           }
         );
-      }
-    );
-
-    //Pour récupérer id du dernier client
-    this.clientService.getAll().subscribe(
-      voyageurs => {
-        this.voyageurs = voyageurs;
-      }
-    );
-
-    //Pour récupérer l'id de la dernière reservation
-    this.reservationService.getAll().subscribe(
-      reservations => {
-        this.reservations = reservations;
       }
     );
   }
@@ -92,20 +79,16 @@ export class ReservationComponent implements OnInit {
   }
 
   addReservation() {
+
     this.activatedRoute.paramMap.subscribe(
       (params) => {
         //+params.get('id') ==> parseToInt
         const reservation = new Reservation(this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value, this.prixFinal, this.nbAccompagnant);
-        console.log(reservation);
 
-        this.reservationService.create(reservation).subscribe(
-          response => console.log('Objet créé'),
-          err => console.log('Nope')
-        );
-
+        this.reservationService.create(reservation).subscribe();
 
         this.accompagnants.value.forEach(accompagnant => {
-          this.clientService.create(new Voyageur(/*+this.voyageurs[this.voyageurs.length-1].id + 1,*/accompagnant.civilite, accompagnant.nom, accompagnant.prenom, accompagnant.naissance, accompagnant.tel, accompagnant.adresse, accompagnant.ville, accompagnant.code_postale, null, null)).subscribe(
+          this.clientService.create(new Voyageur(accompagnant.civilite, accompagnant.nom, accompagnant.prenom, accompagnant.naissance, accompagnant.tel, accompagnant.adresse, accompagnant.ville, accompagnant.code_postale, null, null)).subscribe(
             () => {
               console.log('valide');
             }
