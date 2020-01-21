@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   clients: Voyageur[];
+  error
 
   constructor(private clientService: ClientService, private authService: AuthService, private router: Router) {
   }
@@ -29,13 +30,21 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  get mail(){
+    return this.loginForm.controls.mail
+  }
+
+  get pswd(){
+    return this.loginForm.controls.pswd
+  }
+
   match() {
     this.clients.forEach((c) => {
       if (this.loginForm.controls.mail.value === c.email && this.loginForm.controls.pswd.value === c.password) {
         this.authService.setUser(c)
         this.authService.login();
         this.router.navigate(['**']);
-      }
+      } else this.error = true
     });
   }
 }

@@ -1,1 +1,16 @@
-<p>{{reservationsClient.length}}</p>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <ul class="list-group" *ngIf="reservationsClient">
+                <li class="list-group-item" *ngFor="let reservation of reservationsClient">
+                    <div>
+                        <p>N° Dossier: <span class="font-weight-bold">{{reservation.id}}</span></p>
+                        <p>Date Reservation : <span class="font-weight-light">{{reservation.date | date: "d MMMM yyyy": undefined: 'fr-fr'}}</span></p>
+                        <p>Destination : {{findFormule(reservation.id_formule   ).destination.region}}</p>
+                    </div>
+                </li>
+            </ul>
+            <p *ngIf="reservationsClient.length === 0">Vous n'avez aucune réservation ...</p>
+        </div>
+    </div>
+</div>

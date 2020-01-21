@@ -175,7 +175,7 @@ export class InMemoryDataService implements InMemoryDbService {
         adresse: '4 rue du Petit Clos',
         ville: 'Caen',
         code_postale: '14000',
-        email: 'test',
+        email: 'test@test.fr',
         password: 'test'
       },
       {

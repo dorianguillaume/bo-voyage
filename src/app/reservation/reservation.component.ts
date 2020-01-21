@@ -23,8 +23,8 @@ export class ReservationComponent implements OnInit {
   ngOnInit() {
     this.reservationForm = new FormGroup({
       carteNum: new FormControl('', [Validators.required, CustomValidators.rangeLength([16, 16]), CustomValidators.number]),
-      moisExpiration: new FormControl('', [Validators.required, CustomValidators.rangeLength([2, 2]), CustomValidators.number]),
-      anneeExpiration: new FormControl('', [Validators.required, CustomValidators.rangeLength([4, 4]), CustomValidators.number]),
+      moisExpiration: new FormControl('', [Validators.required, CustomValidators.range([0,12]), CustomValidators.number]),
+      anneeExpiration: new FormControl('', [Validators.required, CustomValidators.range([1900, 2100]), CustomValidators.number]),
       ccv: new FormControl('', [Validators.required, CustomValidators.rangeLength([3, 3]), CustomValidators.number]),
       assurance: new FormControl()
     });
