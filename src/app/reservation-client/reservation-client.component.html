@@ -7,7 +7,7 @@
                         <p>N° Dossier: <span class="font-weight-bold">{{reservation.id}}</span></p>
                         <p>Date Reservation : <span class="font-weight-light">{{reservation.date | date: "d MMMM yyyy": undefined: 'fr-fr'}}</span></p>
                         <p>Destination : {{dest[i]}}</p>
-                      <button class="btn btn-danger" *ngIf="reservation.est_assure">Annuler</button>
+                      <button class="btn btn-danger" *ngIf="reservation.est_assure" (click)="deleteReservation(reservation.id)">Annuler</button>
                       <p *ngIf="!reservation.est_assure">Vous n'avez pas pris d'assurance pour cette réservation</p>
                     </div>
                 </li>

@@ -94,7 +94,7 @@ export class ReservationComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(
       (params) => {
         //+params.get('id') ==> parseToInt
-        const reservation = new Reservation(+this.reservations[this.reservations.length-1].id + 1, this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value, this.prixFinal, this.nbAccompagnant);
+        const reservation = new Reservation(this.authService.user.id, +params.get('id'), new Date(), this.getAssurance().value, this.prixFinal, this.nbAccompagnant);
         console.log(reservation);
 
         this.reservationService.create(reservation).subscribe(

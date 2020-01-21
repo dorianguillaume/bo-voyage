@@ -191,7 +191,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const reservations = [{
-      id: '1',
+      id: 1,
       id_client: '1',
       id_formule: '9',
       date: new Date(),
